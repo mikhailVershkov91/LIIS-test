@@ -1,12 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import DatePickers from "./components/Date/Date-pickers";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+	return (
+		<div className="App">
+			<DatePickers />
+		</div>
+	);
 }
 
-export default App;
+const MainApp = () => {
+	return (
+		<Provider store={store}>
+			<App />
+		</Provider>
+	);
+};
+
+export default MainApp;
