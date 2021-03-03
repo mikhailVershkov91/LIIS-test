@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Auth.module.css";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggleIsAuth } from "../../store/auth-reducer";
 import AuthReduxForm from "./Auth-redux-form";
@@ -24,9 +24,9 @@ const Auth = (props) => {
 		}
 	};
 
-	// if (props.isAuth === true) {
-	// 	return <Redirect to={"/otp"} />;
-	// }
+	if (props.isAuth === true) {
+		return <Redirect to={"/main"} />;
+	}
 
 	return (
 		<div>

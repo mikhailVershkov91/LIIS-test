@@ -2,6 +2,7 @@ const TOGGLE_IS_AUTH = "TOGGLE_IS_AUTH";
 
 const initialState = {
 	isAuth: Boolean(localStorage.getItem("token")),
+	// isAuth: false,
 };
 
 const authReducer = (state = initialState, action) => {
