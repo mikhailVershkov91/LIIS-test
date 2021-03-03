@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// const dat = "2021-09-01";
-
 const instance = axios.create({
 	baseURL:
 		"https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/RU/RUB/en-US/JFK-sky/SVO-sky/",
