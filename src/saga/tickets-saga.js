@@ -2,8 +2,7 @@ import { put, takeEvery, call } from "redux-saga/effects";
 import { setTicketsAC, LOAD_TICKETS } from "../store/tickets-reducer";
 import axios from "axios";
 
-export function fetchTickets(date) {
-	console.log(date);
+function fetchTickets(date) {
 	return axios({
 		method: "GET",
 		baseURL: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/RU/RUB/en-US/JFK-sky/SVO-sky/${date}`,
@@ -15,13 +14,8 @@ export function fetchTickets(date) {
 	});
 }
 
-function* ticketsWorker() {
-	console.log("Im here");
-	// debugger;
-	const data = yield call(fetchTickets);
-	const tickets = yield call(() => new Promise((res) => res(data.json)));
-	console.log(tickets);
-
+function* ticketsWorker({ date }) {
+	const tickets = yield call(fetchTickets, date);
 	yield put(setTicketsAC(tickets));
 }
 

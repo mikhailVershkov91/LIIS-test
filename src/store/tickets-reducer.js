@@ -33,8 +33,9 @@ export const setTicketsAC = (tickets) => ({
 	tickets,
 });
 
-export const loadTicketsAC = () => ({
+export const loadTicketsAC = (date) => ({
 	type: LOAD_TICKETS,
+	date,
 });
 
 // export const toggleIsFetching = (isFetching) => ({
@@ -46,7 +47,7 @@ export const loadTicketsAC = () => ({
 // 	return async (dispatch) => {
 // 		const response = await ticketsAPI.getTickets(date);
 // 		console.log(response);
-// 		dispatch(getTicketsAC(response));
+// 		dispatch(setTicketsAC(response));
 // 	};
 // };
 

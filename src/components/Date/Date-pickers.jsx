@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect, useDispatch } from "react-redux";
 // import { getTickets } from "../../store/tickets-reducer";
-import { fetchTickets } from "../../saga/tickets-saga";
 import { NavLink } from "react-router-dom";
 import { toggleIsAuth } from "../../store/auth-reducer";
 import { loadTicketsAC } from "../../store/tickets-reducer";
@@ -30,17 +29,16 @@ const DatePickers = (props) => {
 	const dispatch = useDispatch();
 
 	const onInputChange = (e) => {
-		// props.getTickets(e.target.value);
-		// fetchTickets(e.target.value);
-		fetchTickets(e.target.value);
-		dispatch(loadTicketsAC());
+		dispatch(loadTicketsAC(e.target.value));
 	};
-
-	// dispatch(loadTicketsAC());
 
 	const onClick = () => {
 		localStorage.removeItem("token");
 		props.toggleIsAuth(false);
+	};
+
+	const onClickButton = () => {
+		dispatch(loadTicketsAC());
 	};
 
 	console.log(props.tickets);
@@ -83,6 +81,7 @@ const DatePickers = (props) => {
 						<span>
 							Добавлено в Избранное: <span>10</span> рейсов
 						</span>
+						<button onClick={onClickButton}>Кликнуть</button>
 					</div>
 
 					<div className={s.content__ticketItems}>
