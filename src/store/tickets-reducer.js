@@ -1,17 +1,26 @@
-import { ticketsAPI } from "../plugins/axios";
+// import { ticketsAPI } from "../plugins/axios";
 
-const GET_TICKETS = "GET_TICKETS";
+export const SET_TICKETS = "SET_TICKETS";
+export const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+export const LOAD_TICKETS = "LOAD_TICKETS";
 
 const initialState = {
 	tickets: [],
+	isFetching: false,
 };
 
 const ticketsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_TICKETS: {
+		case SET_TICKETS: {
 			return {
 				...state,
 				tickets: action.tickets,
+			};
+		}
+		case TOGGLE_IS_FETCHING: {
+			return {
+				...state,
+				isFetching: action.isFetching,
 			};
 		}
 		default:
@@ -19,17 +28,26 @@ const ticketsReducer = (state = initialState, action) => {
 	}
 };
 
-export const getTicketsAC = (tickets) => ({
-	type: GET_TICKETS,
+export const setTicketsAC = (tickets) => ({
+	type: SET_TICKETS,
 	tickets,
 });
 
-export const getTickets = (date) => {
-	return async (dispatch) => {
-		const response = await ticketsAPI.getTickets(date);
-		console.log(response);
-		dispatch(getTicketsAC(response));
-	};
-};
+export const loadTicketsAC = () => ({
+	type: LOAD_TICKETS,
+});
+
+// export const toggleIsFetching = (isFetching) => ({
+// 	type: TOGGLE_IS_FETCHING,
+// 	isFetching,
+// });
+
+// export const getTickets = (date) => {
+// 	return async (dispatch) => {
+// 		const response = await ticketsAPI.getTickets(date);
+// 		console.log(response);
+// 		dispatch(getTicketsAC(response));
+// 	};
+// };
 
 export default ticketsReducer;

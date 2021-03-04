@@ -1,4 +1,4 @@
-.textCenter {
+/* .textCenter {
 	text-align: center;
 }
 
@@ -75,20 +75,140 @@
 	transition: 0.2s;
 	cursor: pointer;
 	color: white;
+} */
+.wrapper {
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	min-height: 100vh;
+	min-width: 100vw;
+	width: 100vw;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginArea {
+	width: 410px;
+	height: 338px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+}
+
+.loginArea__title {
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 28.13px;
+	margin-bottom: 16px;
+	color: #424242;
+}
+
+.loginArea__form {
+	width: 345;
+}
+
+.formInputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	/* justify-content: flex-end; */
+	width: 100%;
+}
+.formInputContainer span {
+	display: block;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 18.75px;
+	color: #424242;
+	margin-bottom: 7px;
+}
+
+.reduxForm {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.formInput {
+	width: 345px;
+	height: 34px;
+	margin-bottom: 25px;
+	border: 1px solid #c9cacc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+.formButton {
+	width: 116px;
+	height: 34px;
+	background: linear-gradient(104.34deg, #3c4cad -15.34%, #00c3ff 145.95%);
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	color: #fff;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18.75px;
+}
+
+.formButton:hover {
+	cursor: pointer;
+	width: 116px;
+	height: 34px;
+	background: linear-gradient(104.34deg, #3c4cad -15.34%, #00c3ff 145.95%);
+	box-shadow: 0px 0px 4px #99a0a3;
+	color: #fff;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18.75px;
+}
+
+.formButton:active {
+	cursor: pointer;
+	width: 116px;
+	height: 34px;
+	background: linear-gradient(104.34deg, #5362be -15.34%, #4ad5ff 145.95%);
+	border: 1.5px solid rgba(29, 138, 216, 0.3);
+	border-radius: 4px;
+	color: #fff;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 18.75px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0px auto;
 }
 
 /* ERROR */
 
 .formControl.error input {
-	border: 5px red solid;
+	background: #ffffff;
+	border: 1px solid #eb1717;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 4px rgba(235, 23, 23, 0.2);
+	border-radius: 4px;
 }
 
 .formControl.error span {
-	color: red;
+	color: #eb1717;
 }
 
 .formSummaryError {
-	border: 3px blue solid;
-	padding: 5px;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 14px;
 	color: red;
 }

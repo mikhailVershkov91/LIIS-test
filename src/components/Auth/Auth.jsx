@@ -8,8 +8,6 @@ import AuthReduxForm from "./Auth-redux-form";
 const Auth = (props) => {
 	const token = localStorage.getItem("token");
 
-	props.toggleIsAuth(true); // непонятно зачем?
-
 	if (token == null) {
 		props.toggleIsAuth(false);
 	}
@@ -18,7 +16,6 @@ const Auth = (props) => {
 		if (formData.login === "test@test.ru" && formData.password === "123") {
 			localStorage.setItem("token", "logged_in_already");
 			props.toggleIsAuth(true);
-			console.log("Yeeeeaaaah!");
 		} else {
 			alert("Email or password is incorrect");
 		}
@@ -30,7 +27,19 @@ const Auth = (props) => {
 
 	return (
 		<div>
-			<div className={`${s.standartSection} ${s.loginWrap}`}>
+			<div className={s.wrapper}>
+				<div className={s.content}>
+					<div className={s.loginArea}>
+						<div className={s.container}>
+							<div className={s.loginArea__title}>Simple Flight Check</div>
+							<div className={s.loginArea__form}>
+								<AuthReduxForm onSubmit={onSubmit} />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* <div className={`${s.standartSection} ${s.loginWrap}`}>
 				<div className={s.container}>
 					<h3 className={`${s.title} ${s.textCenter} ${s.textUppercase}`}>
 						Login
@@ -45,7 +54,7 @@ const Auth = (props) => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

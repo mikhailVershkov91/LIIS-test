@@ -18,19 +18,17 @@ const Input = ({ input, meta, ...props }) => {
 
 const LoginForm = (props) => {
 	return (
-		<form onSubmit={props.handleSubmit}>
+		<form className={s.reduxForm} onSubmit={props.handleSubmit}>
 			<div className={s.formInputContainer}>
+				<span>Логин:</span>
 				<Field
-					placeholder={"Loginnnn"}
 					component={Input}
 					name={"login"}
 					validate={[required, maxLength15, email]}
 					className={s.formInput}
 				/>
-			</div>
-			<div className={s.formInputContainer}>
+				<span>Пароль:</span>
 				<Field
-					placeholder={"Password"}
 					component={Input}
 					name={"password"}
 					validate={[required, maxLength15]}
@@ -39,7 +37,7 @@ const LoginForm = (props) => {
 				/>
 			</div>
 			<div>
-				<button className={s.formButton}>Submit</button>
+				<button className={s.formButton}>Войти</button>
 			</div>
 		</form>
 	);
