@@ -1,31 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { connect, useDispatch } from "react-redux";
-// import { getTickets } from "../../store/tickets-reducer";
 import { NavLink } from "react-router-dom";
 import { toggleIsAuth } from "../../store/auth-reducer";
 import { loadTicketsAC } from "../../store/tickets-reducer";
-import s from "./Date-pickers.module.css";
+import s from "./Main-page.module.css";
 import logoutIcon from "../assets/logout.svg";
 import arrow from "../assets/Vector.svg";
-import SimpleCard from "../Card/Card";
+import Card from "../Card/Card";
+import Carousel from "../Carousel/Carousel";
 
-const useStyles = makeStyles((theme) => ({
-	content__datePicker: {
-		display: "flex",
-		flexWrap: "wrap",
-	},
-	content__textField: {
-		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
-		width: 200,
-	},
-}));
-
-const DatePickers = (props) => {
-	const classes = useStyles();
-
+const MainPage = (props) => {
 	const dispatch = useDispatch();
 
 	const onInputChange = (e) => {
@@ -35,10 +20,6 @@ const DatePickers = (props) => {
 	const onClick = () => {
 		localStorage.removeItem("token");
 		props.toggleIsAuth(false);
-	};
-
-	const onClickButton = () => {
-		dispatch(loadTicketsAC());
 	};
 
 	console.log(props.tickets);
@@ -75,17 +56,26 @@ const DatePickers = (props) => {
 							/>
 						</form>
 					</div>
-					<div className={s.content__carousel}></div>
-
+					<div className={s.content__carousel}>
+						<Carousel />
+					</div>
 					<div className={s.content__favourites}>
 						<span>
-							Добавлено в Избранное: <span>10</span> рейсов
+							Добавлено в Избранное: <span>{props.favorites}</span> рейсов
 						</span>
-						<button onClick={onClickButton}>Кликнуть</button>
 					</div>
-
 					<div className={s.content__ticketItems}>
-						<SimpleCard />
+						{props.tickets.data && <Card tickets={props.tickets} />}
+						{/* <Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card />
+						<Card /> */}
 					</div>
 				</div>
 			</div>
@@ -96,11 +86,11 @@ const DatePickers = (props) => {
 const mapStateToProps = (state) => ({
 	tickets: state.tickets.tickets,
 	isAuth: state.auth.isAuth,
+	favorites: state.tickets.favorites,
 });
 
-let DatePickersContainer = connect(mapStateToProps, {
-	// getTickets,
+let MainPageContainer = connect(mapStateToProps, {
 	toggleIsAuth,
-})(DatePickers);
+})(MainPage);
 
-export default DatePickersContainer;
+export default MainPageContainer;

@@ -13,7 +13,7 @@ const Auth = (props) => {
 	}
 
 	const onSubmit = (formData) => {
-		if (formData.login === "test@test.ru" && formData.password === "123") {
+		if (formData.login === "test@test.ru" && formData.password === "12345678") {
 			localStorage.setItem("token", "logged_in_already");
 			props.toggleIsAuth(true);
 		} else {

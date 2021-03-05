@@ -1,6 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import { required, maxLength15, email } from "../utils/validators";
+import { required, minLength8, email, onlyLat } from "../utils/validators";
 import s from "./Auth.module.css";
 
 const Input = ({ input, meta, ...props }) => {
@@ -24,14 +24,14 @@ const LoginForm = (props) => {
 				<Field
 					component={Input}
 					name={"login"}
-					validate={[required, maxLength15, email]}
+					validate={[required, email]}
 					className={s.formInput}
 				/>
 				<span>Пароль:</span>
 				<Field
 					component={Input}
 					name={"password"}
-					validate={[required, maxLength15]}
+					validate={[required, minLength8, onlyLat]}
 					type={"password"}
 					className={s.formInput}
 				/>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import DatePickers from "./components/Date/Date-pickers";
+import MainPageContainer from "./components/Main/Main-page";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import Auth from "./components/Auth/Auth";
@@ -10,7 +10,7 @@ function App() {
 	return (
 		<div className="App">
 			<Route exact path="/" render={() => <Auth />} />
-			<Route path="/main" render={() => <DatePickers />} />
+			<Route path="/main" render={() => <MainPageContainer />} />
 		</div>
 	);
 }

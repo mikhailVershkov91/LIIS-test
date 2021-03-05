@@ -19,6 +19,4 @@ const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(ticketsWatcher);
 
-window.__store__ = store;
-
 export default store;

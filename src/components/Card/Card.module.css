@@ -1,0 +1,100 @@
+.card {
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+}
+
+.container {
+	padding: 10px;
+}
+
+.card__row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.card__main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.card__image {
+	display: flex;
+}
+
+.card__info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 24px;
+}
+
+.card__cities {
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 17px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #424242;
+}
+
+.card__cities img {
+	margin: 0 12px;
+}
+
+.card__date {
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #878787;
+	display: flex;
+	align-items: center;
+}
+.card__date img {
+	margin: 0 10px;
+}
+
+.card__company {
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #878787;
+}
+
+.card__otherInfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.card__ticketPrice {
+	display: flex;
+align-items: baseline;
+}
+
+.card__price {
+	font-family: SF Pro Text;
+	font-weight: 300;
+	font-size: 11px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #878787;
+	margin-right: 8px;
+}
+
+.card__amount {
+	font-family: SF Pro Text;
+	font-size: 17px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #424242;
+}
