@@ -1,81 +1,3 @@
-/* .textCenter {
-	text-align: center;
-}
-
-.textUppercase {
-	text-transform: uppercase;
-}
-
-.standartSection {
-	padding: 80px 0;
-	background-color: #ffffff;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.title {
-	font-weight: 900;
-	margin-bottom: 75px;
-	font-size: 30px;
-	color: black;
-}
-
-.col4 {
-	width: 33.3333%;
-	border-radius: 10px;
-}
-
-.row {
-	display: flex;
-	justify-content: center;
-}
-
-.item {
-	box-shadow: 0 13px 27px rgba(196, 9, 9, 0.15);
-	padding: 20px;
-	background-color: #ffffff;
-	border-top-left-radius: 40px;
-	border-bottom-right-radius: 40px;
-}
-
-.item .form {
-	display: block;
-}
-
-.formInput {
-	padding: 16px 20px;
-	color: black;
-	border-radius: 10px;
-	font-family: "Chilanka", cursive;
-	font-weight: bold;
-	margin-bottom: 5px;
-}
-
-.formInputContainer {
-	margin-bottom: 40px;
-}
-
-.formInput:hover {
-	cursor: pointer;
-	box-shadow: 0 13px 27px rgba(0, 0, 0, 0.15);
-}
-
-.formButton {
-	background: linear-gradient(to right, white, red);
-	padding: 10px 76px;
-	border-radius: 10px;
-	color: black;
-	font-family: "Chilanka", cursive;
-	font-weight: bold;
-}
-
-.formButton:hover {
-	background: linear-gradient(to right, red, white);
-	transition: 0.2s;
-	cursor: pointer;
-	color: white;
-} */
 .wrapper {
 	overflow: hidden;
 	display: flex;
@@ -124,9 +46,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	/* justify-content: flex-end; */
 	width: 100%;
 }
+
 .formInputContainer span {
 	font-family: Roboto;
 	font-style: normal;
@@ -208,11 +130,11 @@
 
 .formControl.error span {
 	color: #eb1717;
-}
-
-.formSummaryError {
+	text-align: left;
+	margin: -20px 0;
+	position: absolute;
+	font-family: Roboto;
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 14px;
-	color: red;
 }

@@ -1,3 +1,4 @@
+/* WRAPPER START */
 .wrapper {
 	height: 100vh;
 	min-width: 100vw;
@@ -26,7 +27,9 @@
 	padding-right: 15px;
 	color: #1157a7;
 }
+/* WRAPPER END */
 
+/* CONTENT START */
 .contentContainer {
 	width: 43%;
 	height: 86%;
@@ -62,9 +65,10 @@
 	margin: 0 20px;
 }
 
-/* .content__carousel {
-	height: 164px;
-} */
+.content__carousel {
+	margin-bottom: 10px;
+	height: 140px;
+}
 
 .content__favourites {
 	width: 300px;
@@ -83,9 +87,8 @@
 }
 
 .content__ticketItems {
-	height: 515px;
+	height: 340px;
 	overflow-y: scroll;
-	flex-wrap: wrap;
 }
 
 .content__ticketItems::-webkit-scrollbar {
@@ -99,12 +102,13 @@
 	box-shadow: inset 1px 1px 2px #1157a7;
 }
 
-/* .content__datePicker {
-	display: flex;
-	flex-wrap:wrap;
+.content__message {
+	font-family: SF Pro Text;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 22px;
+	letter-spacing: -0.408px;
+	color: #820707;
+	text-align: center;
 }
-.content__textField {
-	margin-left: theme.spacing(1),
-	marginRight: theme.spacing(1),
-	width: 200,
-} */
+/* CONTENT END */

@@ -22,6 +22,7 @@ const MainPage = (props) => {
 		props.toggleIsAuth(false);
 	};
 
+	console.log(props.id);
 	console.log(props.tickets);
 
 	return (
@@ -64,18 +65,27 @@ const MainPage = (props) => {
 							Добавлено в Избранное: <span>{props.favorites}</span> рейсов
 						</span>
 					</div>
-					<div className={s.content__ticketItems}>
-						{props.tickets.data && <Card tickets={props.tickets} />}
-						{/* <Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card />
-						<Card /> */}
+					<div className={props.tickets.data ? s.content__ticketItems : ""}>
+						{props.tickets.data ? (
+							<>
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+								<Card tickets={props.tickets} />
+							</>
+						) : (
+							<span className={s.content__message}>
+								Please select a departure date
+							</span>
+						)}
 					</div>
 				</div>
 			</div>
@@ -89,7 +99,7 @@ const mapStateToProps = (state) => ({
 	favorites: state.tickets.favorites,
 });
 
-let MainPageContainer = connect(mapStateToProps, {
+const MainPageContainer = connect(mapStateToProps, {
 	toggleIsAuth,
 })(MainPage);
 

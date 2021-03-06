@@ -24,6 +24,12 @@ const Card = (props) => {
 		}
 	};
 
+	let depatureDate = new Date(
+		props.tickets.data.Dates.OutboundDates[0].PartialDate
+	)
+		.toUTCString()
+		.slice(5, 16);
+
 	return (
 		<div className={s.card}>
 			<div className={s.container}>
@@ -39,7 +45,7 @@ const Card = (props) => {
 								<span>New York (JFK)</span>
 							</div>
 							<div className={s.card__date}>
-								<span>29 May, 2021</span>
+								<span>{depatureDate}</span>
 								<img src={dash} alt="черта" />
 								<span>
 									{props.tickets.data.Dates.OutboundDates[0].QuoteDateTime.slice(
@@ -54,7 +60,7 @@ const Card = (props) => {
 						</div>
 					</div>
 					<div className={s.card__otherInfo}>
-						<div onClick={onClick}>
+						<div className={s.card__likes} onClick={onClick}>
 							{props.likeIsActive && <img src={likeOn} alt="сердце" />}
 							{!props.likeIsActive && <img src={likeOff} alt="сердце" />}
 						</div>
@@ -75,7 +81,7 @@ const mapStateToProps = (state) => ({
 	likeIsActive: state.tickets.likeIsActive,
 });
 
-let CardContainer = connect(mapStateToProps, {
+const CardContainer = connect(mapStateToProps, {
 	activateLikeAC,
 	deactivateLikeAC,
 	incrementAC,

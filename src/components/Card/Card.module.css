@@ -55,6 +55,7 @@
 	display: flex;
 	align-items: center;
 }
+
 .card__date img {
 	margin: 0 10px;
 }
@@ -76,9 +77,14 @@
 	align-items: flex-end;
 }
 
+.card__likes:hover {
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
 .card__ticketPrice {
 	display: flex;
-align-items: baseline;
+	align-items: baseline;
 }
 
 .card__price {
