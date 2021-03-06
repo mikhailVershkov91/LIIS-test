@@ -39,22 +39,6 @@ const Auth = (props) => {
 					</div>
 				</div>
 			</div>
-			{/* <div className={`${s.standartSection} ${s.loginWrap}`}>
-				<div className={s.container}>
-					<h3 className={`${s.title} ${s.textCenter} ${s.textUppercase}`}>
-						Login
-					</h3>
-					<div className={s.row}>
-						<div className={s.col4}>
-							<div className={s.item}>
-								<div className={`${s.form} ${s.textCenter}`}>
-									<AuthReduxForm onSubmit={onSubmit} />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> */}
 		</div>
 	);
 };

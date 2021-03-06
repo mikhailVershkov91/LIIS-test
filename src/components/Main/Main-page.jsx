@@ -22,9 +22,6 @@ const MainPage = (props) => {
 		props.toggleIsAuth(false);
 	};
 
-	console.log(props.id);
-	console.log(props.tickets);
-
 	return (
 		<div className={s.wrapper}>
 			{props.isAuth && (
@@ -65,6 +62,7 @@ const MainPage = (props) => {
 							Добавлено в Избранное: <span>{props.favorites}</span> рейсов
 						</span>
 					</div>
+
 					<div className={props.tickets.data ? s.content__ticketItems : ""}>
 						{props.tickets.data ? (
 							<>
