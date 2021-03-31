@@ -7,22 +7,18 @@ export const DECREMENT = "DECREMENT";
 
 const initialState = {
 	tickets: [],
-	isFetching: false,
 	favorites: 0,
-	// cards: [
-	// 	{ name: "card1", id: 1, likeIsActive: false },
-	// 	{ name: "card2", id: 2, likeIsActive: false },
-	// 	{ name: "card3", id: 3, likeIsActive: false },
-	// 	{ name: "card4", id: 4, likeIsActive: false },
-	// 	{ name: "card5", id: 5, likeIsActive: false },
-	// 	{ name: "card6", id: 6, likeIsActive: false },
-	// 	{ name: "card7", id: 7, likeIsActive: false },
-	// 	{ name: "card8", id: 8, likeIsActive: false },
-	// 	{ name: "card9", id: 9, likeIsActive: false },
-	// 	{ name: "card10", id: 10, likeIsActive: false },
-	// 	{ name: "card11", id: 11, likeIsActive: false },
-	// 	{ name: "card12", id: 12, likeIsActive: false },
-	// ],
+	cards: [
+		{ id: 1, likeIsActive: false },
+		{ id: 2, likeIsActive: false },
+		{ id: 3, likeIsActive: false },
+		{ id: 4, likeIsActive: false },
+		{ id: 5, likeIsActive: false },
+		{ id: 6, likeIsActive: false },
+		{ id: 7, likeIsActive: false },
+		{ id: 8, likeIsActive: false },
+		{ id: 9, likeIsActive: false },
+	],
 };
 
 const ticketsReducer = (state = initialState, action) => {
@@ -36,39 +32,25 @@ const ticketsReducer = (state = initialState, action) => {
 		case LIKE_ACTIVATE: {
 			return {
 				...state,
-				likeIsActive: true,
+				cards: state.cards.map((card) => {
+					if (card.id === action.id) {
+						return { ...card, likeIsActive: true };
+					}
+					return card;
+				}),
 			};
 		}
 		case LIKE_DEACTIVATE: {
 			return {
 				...state,
-				likeIsActive: false,
+				cards: state.cards.map((card) => {
+					if (card.id === action.id) {
+						return { ...card, likeIsActive: false };
+					}
+					return card;
+				}),
 			};
 		}
-
-		// case LIKE_ACTIVATE: {
-		// 	return {
-		// 		...state,
-		// 		cards: state.cards.map((card) => {
-		// 			if (card.id === action.id) {
-		// 				return { ...card, likeIsActive: true };
-		// 			}
-		// 			return card;
-		// 		}),
-		// 	};
-		// }
-		// case LIKE_DEACTIVATE: {
-		// 	return {
-		// 		...state,
-		// 		cards: state.cards.map((card) => {
-		// 			if (card.id === action.id) {
-		// 				return { ...card, likeIsActive: false };
-		// 			}
-		// 			return card;
-		// 		}),
-		// 	};
-		// }
-
 		case INCREMENT: {
 			return {
 				...state,
@@ -96,12 +78,14 @@ export const setTicketsAC = (tickets) => ({
 	tickets,
 });
 
-export const activateLikeAC = () => ({
+export const activateLikeAC = (id) => ({
 	type: LIKE_ACTIVATE,
+	id,
 });
 
-export const deactivateLikeAC = () => ({
+export const deactivateLikeAC = (id) => ({
 	type: LIKE_DEACTIVATE,
+	id,
 });
 
 export const incrementAC = () => ({
@@ -111,13 +95,5 @@ export const incrementAC = () => ({
 export const decrementAC = () => ({
 	type: DECREMENT,
 });
-
-// export const getTickets = (date) => {
-// 	return async (dispatch) => {
-// 		const response = await ticketsAPI.getTickets(date);
-// 		console.log(response);
-// 		dispatch(setTicketsAC(response));
-// 	};
-// };
 
 export default ticketsReducer;

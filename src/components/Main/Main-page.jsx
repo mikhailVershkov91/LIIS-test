@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toggleIsAuth } from "../../store/auth-reducer";
 import { loadTicketsAC } from "../../store/tickets-reducer";
@@ -10,8 +10,12 @@ import arrow from "../assets/Vector.svg";
 import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
 
-const MainPage = (props) => {
+const MainPage = () => {
 	const dispatch = useDispatch();
+	const tickets = useSelector((state) => state.tickets.tickets);
+	const isAuth = useSelector((state) => state.auth.isAuth);
+	const favorites = useSelector((state) => state.tickets.favorites);
+	const cards = useSelector((state) => state.tickets.cards);
 
 	const onInputChange = (e) => {
 		dispatch(loadTicketsAC(e.target.value));
@@ -19,12 +23,12 @@ const MainPage = (props) => {
 
 	const onClick = () => {
 		localStorage.removeItem("token");
-		props.toggleIsAuth(false);
+		dispatch(toggleIsAuth(false));
 	};
 
 	return (
 		<div className={s.wrapper}>
-			{props.isAuth && (
+			{isAuth && (
 				<div className={s.wrapper__logout}>
 					<NavLink onClick={onClick} to={"/"}>
 						Выйти
@@ -59,26 +63,15 @@ const MainPage = (props) => {
 					</div>
 					<div className={s.content__favourites}>
 						<span>
-							Добавлено в Избранное: <span>{props.favorites}</span> рейсов
+							Добавлено в Избранное: <span>{favorites}</span> рейсов
 						</span>
 					</div>
 
-					<div className={props.tickets.data ? s.content__ticketItems : ""}>
-						{props.tickets.data ? (
-							<>
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-								<Card tickets={props.tickets} />
-							</>
+					<div className={tickets.data ? s.content__ticketItems : ""}>
+						{tickets.data ? (
+							cards.map((card, key) => (
+								<Card key={card.id} card={card} tickets={tickets} />
+							))
 						) : (
 							<span className={s.content__message}>
 								Please select a departure date
@@ -91,14 +84,4 @@ const MainPage = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	tickets: state.tickets.tickets,
-	isAuth: state.auth.isAuth,
-	favorites: state.tickets.favorites,
-});
-
-const MainPageContainer = connect(mapStateToProps, {
-	toggleIsAuth,
-})(MainPage);
-
-export default MainPageContainer;
+export default MainPage;

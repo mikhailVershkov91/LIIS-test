@@ -5,7 +5,7 @@ import likeOff from "../assets/like_off.svg";
 import likeOn from "../assets/like_on.svg";
 import arrow from "../assets/arrow.svg";
 import dash from "../assets/dash.svg";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	activateLikeAC,
 	deactivateLikeAC,
@@ -14,13 +14,15 @@ import {
 } from "../../store/tickets-reducer";
 
 const Card = (props) => {
+	const dispatch = useDispatch();
+
 	const onClick = () => {
-		if (props.likeIsActive === true) {
-			props.deactivateLikeAC();
-			props.decrementAC();
+		if (props.card.likeIsActive === true) {
+			dispatch(deactivateLikeAC(props.card.id));
+			dispatch(decrementAC());
 		} else {
-			props.activateLikeAC();
-			props.incrementAC();
+			dispatch(activateLikeAC(props.card.id));
+			dispatch(incrementAC());
 		}
 	};
 
@@ -61,8 +63,8 @@ const Card = (props) => {
 					</div>
 					<div className={s.card__otherInfo}>
 						<div className={s.card__likes} onClick={onClick}>
-							{props.likeIsActive && <img src={likeOn} alt="сердце" />}
-							{!props.likeIsActive && <img src={likeOff} alt="сердце" />}
+							{props.card.likeIsActive && <img src={likeOn} alt="сердце" />}
+							{!props.card.likeIsActive && <img src={likeOff} alt="сердце" />}
 						</div>
 						<div className={s.card__ticketPrice}>
 							<div className={s.card__price}>Price:</div>
@@ -77,15 +79,4 @@ const Card = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	likeIsActive: state.tickets.likeIsActive,
-});
-
-const CardContainer = connect(mapStateToProps, {
-	activateLikeAC,
-	deactivateLikeAC,
-	incrementAC,
-	decrementAC,
-})(Card);
-
-export default CardContainer;
+export default Card;
